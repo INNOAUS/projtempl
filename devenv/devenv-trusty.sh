@@ -58,4 +58,5 @@ sudo apt-get -y install mono-complete
 # npm install -g express
 
 sudo apt-get -y install python-software-properties
+sudo apt-get -y install postgresql-contrib-9.3
 sudo apt-get update
