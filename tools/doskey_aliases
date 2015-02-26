@@ -1,0 +1,7 @@
+ls=dir
+ll=dir /ONE $*
+cd=cd /d $*
+python=python -ic "" 
+ps=tasklist $*
+kill=taskkill /IM $*
+rm=del $*
