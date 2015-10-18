@@ -17,7 +17,7 @@ prefix			?= /opt/Ice-$(VERSION)
 # Define OPTIMIZE as yes if you want to build with
 # optimization. Otherwise Ice is build with debug information.
 #
-#OPTIMIZE		= yes
+OPTIMIZE		= yes
 
 #
 # The "root directory" for runpath embedded in executables. Can be set
@@ -142,7 +142,7 @@ USE_READLINE		?= no
 # Define CPP11 as yes if you want to enable C++11 features in GCC or
 # Clang.
 #
-#CPP11     		?= yes
+CPP11     		?= yes
 
 # ----------------------------------------------------------------------
 # Don't change anything below this line!
