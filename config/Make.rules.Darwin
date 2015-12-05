@@ -11,12 +11,12 @@
 # This file is included by Make.rules when uname is Darwin.
 #
 
-OSX_TARGET_MIN_SDK_VERSION = 10.9
+OSX_TARGET_MIN_SDK_VERSION = 10.11
 
 CXX			= xcrun clang++
 
 CPPFLAGS		+= -pthread -fvisibility=hidden
-CXXFLAGS		+= -Wall -Werror -mmacosx-version-min=$(OSX_TARGET_MIN_SDK_VERSION)
+CXXFLAGS		+= -Wall -Werror -Wno-unused-variable -Wno-unused-function -mmacosx-version-min=$(OSX_TARGET_MIN_SDK_VERSION)
 
 # If MAXWARN is set then enable extra warnings
 ifeq ($(MAXWARN),yes)
@@ -35,6 +35,9 @@ ifeq ($(OPTIMIZE),yes)
 else
      CXXFLAGS		:= $(CXXARCHFLAGS) -g $(CXXFLAGS)
 endif
+
+CPPFLAGS    := $(CPPFLAGS) -I/usr/local/include
+LDFLAGS     := $(LDFLAGS) -L/usr/local/lib
 
 #
 # On OS X, always build with C++11 support enabled unless we
@@ -63,7 +66,7 @@ ifeq ($(embedded_runpath),yes)
     # If embedded_runpath_prefix is set it has preference
     #
     ifneq ($(embedded_runpath_prefix),)
-        RPATH_DIR = $(embedded_runpath_prefix)
+        RPATH_DIR = $(embedded_runpath_prefix)/lib
     endif
 
     ifeq ($(RPATH_DIR),)
